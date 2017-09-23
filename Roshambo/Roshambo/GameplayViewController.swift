@@ -22,6 +22,7 @@ class GameplayViewController: UIViewController {
     var userPlay = Play.rock
     var opponentPlay = Play.rock
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -42,31 +43,31 @@ class GameplayViewController: UIViewController {
         }
     }
     
-    func compareMoves(_ userMove: Play, _ opponentMove: Play) {
+    func compareMoves(_ userMove: Play, _ opponentMove: Play) -> String {
         
         print("userMove: \(userMove)")
         print("opponentMove: \(opponentMove) \n")
         
         switch (userMove, opponentMove) {
         case (.rock, .paper):
-            print("Paper covers rock. You lose!")
+            return "Paper covers rock. You lose!"
         case (.rock, .scissors):
-            print("Rock crushes scissors. You win!")
+            return "Rock crushes scissors. You win!"
             
         case (.paper, .rock):
-            print("Paper covers rock. You win!")
+            return "Paper covers rock. You win!"
             
         case (.paper, .scissors):
-            print("Scissors cuts paper. You lose!")
+            return "Scissors cuts paper. You lose!"
             
         case (.scissors, .rock):
-            print("Rock crushes scissors. You lose!")
+            return "Rock crushes scissors. You lose!"
             
         case (.scissors, .paper):
-            print("Scissors cuts paper. You win!")
+            return "Scissors cuts paper. You win!"
             
         case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
-            print("Tie!")
+            return "Tie!"
         }
     }
     
@@ -87,10 +88,13 @@ class GameplayViewController: UIViewController {
         }
         
         opponentMove()
-        compareMoves(userPlay, opponentPlay)
+        let result = compareMoves(userPlay, opponentPlay)
+        print(result)
         
         let controller: ResultsViewController
         controller = self.storyboard?.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
+        
+        controller.result = result
         
         present(controller, animated: true, completion: nil)
     }

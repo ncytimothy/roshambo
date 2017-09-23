@@ -82,9 +82,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-PS-wjB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-PS-wjB">
                                 <rect key="frame" x="159" y="363" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -99,11 +98,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kk1-PS-wjB" firstAttribute="centerX" secondItem="3Ca-Cz-bke" secondAttribute="centerX" id="atm-zT-cpJ"/>
+                            <constraint firstItem="Kk1-PS-wjB" firstAttribute="top" secondItem="3Ca-Cz-bke" secondAttribute="top" constant="343" id="sSU-Rq-fMH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Ca-Cz-bke"/>
                     </view>
                     <connections>
                         <outlet property="playAgainButton" destination="Fvo-Zj-oZ0" id="iAf-9I-WbG"/>
-                        <outlet property="resultLabel" destination="Kk1-PS-wjB" id="8Hz-bY-TS6"/>
+                        <outlet property="resultLabel" destination="Kk1-PS-wjB" id="nbM-IA-kEY"/>
                         <outlet property="resultView" destination="bdy-Hj-ySj" id="m0i-eN-eAf"/>
                     </connections>
                 </viewController>
