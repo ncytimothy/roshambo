@@ -17,13 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMI-vU-mt3" userLabel="Rock Button">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMI-vU-mt3" userLabel="Rock Button">
                                 <rect key="frame" x="68" y="235" width="75" height="65"/>
                                 <state key="normal" image="rock"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T7v-j9-cpS"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgC-ud-c5A" userLabel="Paper Button">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgC-ud-c5A" userLabel="Paper Button">
                                 <rect key="frame" x="150" y="154" width="75" height="65"/>
                                 <state key="normal" image="paper"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uqo-ph-iFo"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-Z5-78a">
                                 <rect key="frame" x="151" y="348" width="73" height="21"/>
@@ -31,9 +37,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Dy-VkX" userLabel="Scissors Button">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Dy-VkX" userLabel="Scissors Button">
                                 <rect key="frame" x="236" y="235" width="75" height="65"/>
                                 <state key="normal" image="scissors"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GdU-2D-ARp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,6 +59,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="paperButton" destination="VgC-ud-c5A" id="iQI-Zc-kcn"/>
+                        <outlet property="rockButton" destination="TMI-vU-mt3" id="ntM-WV-yFZ"/>
+                        <outlet property="scissorsButton" destination="aEl-Dy-VkX" id="dw7-jq-TGr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +72,7 @@
         <!--Results View Controller-->
         <scene sceneID="IKb-hE-At5">
             <objects>
-                <viewController id="H9c-Qj-0BL" userLabel="Results View Controller" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultsViewController" id="H9c-Qj-0BL" userLabel="Results View Controller" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AQC-mP-6UN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,11 +93,19 @@
                                 <rect key="frame" x="149" y="468" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="H9c-Qj-0BL" eventType="touchUpInside" id="ORO-Ny-kdk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="3Ca-Cz-bke"/>
                     </view>
+                    <connections>
+                        <outlet property="playAgainButton" destination="Fvo-Zj-oZ0" id="iAf-9I-WbG"/>
+                        <outlet property="resultLabel" destination="Kk1-PS-wjB" id="8Hz-bY-TS6"/>
+                        <outlet property="resultView" destination="bdy-Hj-ySj" id="m0i-eN-eAf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T2-Ij-OLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
