@@ -19,6 +19,7 @@ class ResultsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let result = result {
             self.resultLabel.text = result
+            
         } else {
             self.resultLabel.text = nil
         }
