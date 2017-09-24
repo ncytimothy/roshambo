@@ -17,18 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMI-vU-mt3" userLabel="Rock Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMI-vU-mt3" userLabel="Rock Button">
                                 <rect key="frame" x="68" y="235" width="75" height="65"/>
                                 <state key="normal" image="rock"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T7v-j9-cpS"/>
+                                    <action selector="rockButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N3F-2P-BwK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgC-ud-c5A" userLabel="Paper Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgC-ud-c5A" userLabel="Paper Button">
                                 <rect key="frame" x="150" y="154" width="75" height="65"/>
                                 <state key="normal" image="paper"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uqo-ph-iFo"/>
+                                    <action selector="paperButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUq-H5-piC"/>
+                                    <segue destination="H9c-Qj-0BL" kind="presentation" identifier="paperPressed" id="b3Y-8j-I8F"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-Z5-78a">
@@ -37,11 +38,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Dy-VkX" userLabel="Scissors Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Dy-VkX" userLabel="Scissors Button">
                                 <rect key="frame" x="236" y="235" width="75" height="65"/>
                                 <state key="normal" image="scissors"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GdU-2D-ARp"/>
+                                    <segue destination="H9c-Qj-0BL" kind="presentation" identifier="scissorsPressed" id="Jjw-D3-Ke9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,11 +60,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="paperButton" destination="VgC-ud-c5A" id="iQI-Zc-kcn"/>
-                        <outlet property="rockButton" destination="TMI-vU-mt3" id="ntM-WV-yFZ"/>
-                        <outlet property="scissorsButton" destination="aEl-Dy-VkX" id="dw7-jq-TGr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,6 +90,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMF-6v-UT2">
                                 <rect key="frame" x="67" y="107" width="240" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,8 +101,8 @@
                         <viewLayoutGuide key="safeArea" id="3Ca-Cz-bke"/>
                     </view>
                     <connections>
-                        <outlet property="playAgainButton" destination="Fvo-Zj-oZ0" id="iAf-9I-WbG"/>
                         <outlet property="resultLabel" destination="Kk1-PS-wjB" id="nbM-IA-kEY"/>
+                        <outlet property="resultView" destination="sMF-6v-UT2" id="V80-co-ZoU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T2-Ij-OLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,4 +115,7 @@
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="b3Y-8j-I8F"/>
+    </inferredMetricsTieBreakers>
 </document>

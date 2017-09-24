@@ -9,17 +9,38 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-    @IBOutlet var resultView: UIView!
+    
+    @IBOutlet weak var resultView: UIImageView!
     @IBOutlet var resultLabel: UILabel!
-    @IBOutlet var playAgainButton: UIButton!
     
     // MARK: Properties
     var result: String?
+
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        //The result image will appear only when it is set sucessfully
+        
         if let result = result {
             self.resultLabel.text = result
             
+            
+            
+            if result.lowercased().contains("paper covers rock") {
+                 resultView.image = UIImage(named: "PaperCoversRock")
+            }
+            
+            if result.lowercased().contains("rock crushes scissors") {
+                resultView.image = UIImage(named: "RockCrushesScissors")
+            }
+            
+            if result.lowercased().contains("scissors cut paper") {
+                resultView.image = UIImage(named: "ScissorsCutPaper")
+            }
+            
+            if result.lowercased().contains("tie") {
+                resultView.image = UIImage(named: "itsATie")
+            }
         } else {
             self.resultLabel.text = nil
         }
@@ -29,8 +50,4 @@ class ResultsViewController: UIViewController {
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
 }

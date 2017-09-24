@@ -8,88 +8,42 @@
 
 import UIKit
 
+enum Play {
+    case rock, paper, scissors
+}
+
 class GameplayViewController: UIViewController {
     
-    @IBOutlet var rockButton:UIButton!
-    @IBOutlet var paperButton:UIButton!
-    @IBOutlet var scissorsButton:UIButton!
-  
+    // MARK: Properties
     
-    enum Play {
-        case rock, paper, scissors
-    }
     
-    var userPlay = Play.rock
-    var opponentPlay = Play.rock
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    func opponentMove() {
+    var userPlay: Play!
+    var opponentPlay: Play!
+    
+    //This function generates a random opponent move
+    func opponentMove() -> Play {
         let move = Int(1 + arc4random_uniform(3))
 
         switch move {
         case 1:
-           opponentPlay = Play.rock
+           return Play.rock
         case 2:
-            opponentPlay = Play.paper
+            return Play.paper
         case 3:
-            opponentPlay = Play.scissors
+            return Play.scissors
         default:
-           opponentPlay = Play.rock
+           return Play.rock
         }
     }
     
-    func compareMoves(_ userMove: Play, _ opponentMove: Play) -> String {
-        
-        print("userMove: \(userMove)")
-        print("opponentMove: \(opponentMove) \n")
-        
-        switch (userMove, opponentMove) {
-        case (.rock, .paper):
-            return "Paper covers rock. You lose!"
-        case (.rock, .scissors):
-            return "Rock crushes scissors. You win!"
-            
-        case (.paper, .rock):
-            return "Paper covers rock. You win!"
-            
-        case (.paper, .scissors):
-            return "Scissors cuts paper. You lose!"
-            
-        case (.scissors, .rock):
-            return "Rock crushes scissors. You lose!"
-            
-        case (.scissors, .paper):
-            return "Scissors cuts paper. You win!"
-            
-        case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
-            return "Tie!"
-        }
-    }
+ 
     
-    @IBAction func buttonPressed(_ sender: Any) {
-        guard let button = sender as? UIButton else {
-            return
-        }
-    
-        switch button.tag {
-        case 1:
-            userPlay = Play.rock
-        case 2:
-            userPlay = Play.paper
-        case 3:
-            userPlay = Play.scissors
-        default:
-            return
-        }
+    // MARK: Programmatic Approach
+    @IBAction func rockButtonPressed(_ sender: Any) {
         
-        opponentMove()
-        let result = compareMoves(userPlay, opponentPlay)
-        print(result)
+        userPlay = Play.rock
+        let result = compareMoves(userPlay, opponentMove())
+
         
         let controller: ResultsViewController
         controller = self.storyboard?.instantiateViewController(withIdentifier: "ResultsViewController") as! ResultsViewController
@@ -98,5 +52,32 @@ class GameplayViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "paperPressed" {
+            self.userPlay = Play.paper
+            let controller = segue.destination as! ResultsViewController
+            
+            let result = compareMoves(userPlay, opponentMove())
+            controller.result = result
+        }
+        
+        if segue.identifier == "scissorsPressed" {
+            self.userPlay = Play.scissors
+            let controller = segue.destination as! ResultsViewController
+
+            let result = compareMoves(userPlay, opponentMove())
+            controller.result = result
+        }
+        
+    
+    }
+    
+    // MARK: Code with Segue Approach
+    @IBAction func paperButtonPressed(_ sender: UIButton) {
+//        performSegue(withIdentifier: "paperPressed", sender: sender)
+    }
+    
 }
 
