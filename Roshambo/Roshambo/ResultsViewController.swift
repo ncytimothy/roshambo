@@ -16,6 +16,7 @@ class ResultsViewController: UIViewController {
     // MARK: Properties
     var result: String?
 
+    // add something
     
     override func viewWillAppear(_ animated: Bool) {
         
